@@ -1,6 +1,6 @@
 function Nav(){
     return(
-        <div className="navbar bg-dark text-white"><h2>This is Our Site</h2></div>
+        <div className="navbar bg-dark text-white"><h2>Welcome is Our Site</h2></div>
         )
   }
   

@@ -5,3 +5,7 @@
     color: aqua;
     margin-left: 2%;
 }
+.card{
+    width: 25%;
+    display: inline-block;
+}
