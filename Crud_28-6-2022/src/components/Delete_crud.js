@@ -30,13 +30,13 @@ class Api extends React.Component {
         this.setState({ in: e.target.value })
     }
 
-
-    getData = (e) => {
-        axios.get('https://62baba8b573ca8f83289f6c8.mockapi.io/users')
-            .then((response) => {
-                this.setState({ users: response.data });
-            })
-    }
+    setData = (data) => {
+        console.log(data);
+        let {  name, email, id } = data;
+        localStorage.setItem('ID', id);
+        localStorage.setItem('Name', name);
+        localStorage.setItem('Email', email);
+     }
 
     handleDelete = (id) => {
         fetch(`https://62baba8b573ca8f83289f6c8.mockapi.io/users/${id}`)
@@ -45,37 +45,61 @@ class Api extends React.Component {
         this.setState({ users: newusers });
     };
 
+    getData = () => {
+
+        axios.get('https://62baba8b573ca8f83289f6c8.mockapi.io/users')
+            .then((response) => {
+                this.setState({ users: response.data });
+            })
+
+    }
+
+    onDelete = (id) => {
+        axios.delete(`https://62baba8b573ca8f83289f6c8.mockapi.io/users/${id}`)
+     .then(() => {
+        this.getData();
+    })
+}
+
     render() {
         return (
 
             <>
                 <br /><br /><br />
-                <input type="text" id="search" placeholder='Search...' onChange={this.handlechange}></input>
+                <input type="text" id="search" placeholder='Search...' class="form-control w-25" onChange={this.handlechange}></input>
                 <br /><br />
-                <table class="table">
+
+                <a class="btn btn-primary" href="/create">Add User</a>
+                <br /><br />
+
+                <table class="table" style={{ textAlign: 'center' }}>
                     <thead class="table-success">
-                        <tr>
+                        <tr >
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Email</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             this.state.users.filter((name) => name.name.toLowerCase().includes(this.state.in)).map((user) => (
-                                <tr>
-                                    <th scope="row">{user.id}</th>
-                                    <td>{user.name}</td>
-                                    <td>
-                                            <button class="btn btn-primary" style={{ marginRight: '3%' }}>
-                                                Edit
-                                            </button>
-                                        <button class="btn btn-danger" onClick={() => this.handleDelete(user.id)}>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))
+                        <tr>
+                            <th scope="row">{user.id}</th>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>
+                                <a href='/update'  style={{ marginRight: '3%', marginLeft: '5%' }}>
+                                    <button class="btn btn-primary" onClick={() => this.setData(user)}>Edit</button>
+                                </a>
+                                <button class="btn btn-danger" onClick={() => this.onDelete(user.id)}>Delete</button>
+
+                                {/* <button  onClick={() => this.handleDelete(user.id)}>
+                                    Delete
+                                </button> */}
+                            </td>
+                        </tr>
+                        ))
                         }
                     </tbody>
                 </table>
