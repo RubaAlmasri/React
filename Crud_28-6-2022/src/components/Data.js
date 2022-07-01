@@ -1,0 +1,27 @@
+export const Data=[
+    {
+        'id':1,
+        'name':'Ruba',
+        'email':'ruba@gmail.com'
+    },
+    {
+        'id':2,
+        'name':'Dana',
+        'email':'dana@gmail.com'
+    },
+    {
+        'id':3,
+        'name':'Anas',
+        'email':'anas@gmail.com'
+    },
+    {
+        'id':4,
+        'name':'Haneen',
+        'email':'haneen@gmail.com'
+    },
+    {
+        'id':5,
+        'name':'Amin',
+        'email':'amin@gmail.com'
+    },
+]
