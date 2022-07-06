@@ -15,7 +15,7 @@ export default function Create() {
     }
     return (
         <div class="container" style={{ marginTop: 200, paddingLeft: 400 }}>
-            <form>
+            {/* <form> */}
                  <div class="mb-3 w-50">
                      <label class="form-label">Name</label>
                      <input type="text" class="form-control" onChange={(e) => setName(e.target.value)}></input>
@@ -25,7 +25,7 @@ export default function Create() {
                      <input type="email" class="form-control" onChange={(e) => setEmail(e.target.value)}></input>
                  </div>
                  <button type="submit" class="btn btn-primary" onClick={postData}>Save</button>
-             </form>
+             {/* </form> */}
         </div>
     )
 }

@@ -23,7 +23,7 @@ export default function Edit() {
 
     return (
         <div class="container" style={{ marginTop: 200, paddingLeft: 400 }}>
-            <form>
+            {/* <form> */}
                 <div class="mb-3 w-50">
                     <label class="form-label">Name</label>
                     <input type="text" class="form-control" value={name} onChange={(e) => setName(e.target.value)}></input>
@@ -33,7 +33,7 @@ export default function Edit() {
                     <input type="text" class="form-control" value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 </div>
                 <button type="submit" class="btn btn-primary" onClick={updateAPIData}>Save</button>
-            </form>
+            {/* </form> */}
             <a href='/' class='btn btn-secondary'>Back</a>
 
         </div >
